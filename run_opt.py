@@ -36,7 +36,7 @@ def optimize_model(parameters):
 
     num_time_steps = var.j_day.shape[0]
 
-    output = np.zeros((var.j_day.shape[0],1))
+    output = np.zeros((var.j_day.shape[0],8))
 
     for step in range(num_time_steps):
         variables = {
@@ -48,15 +48,15 @@ def optimize_model(parameters):
         }
         if step == 0:
             model = ConceptualWatbalModel(parameters = param)
-            output[step] = model.simulate(variables = variables)
+            output[step,:] = model.simulate(variables = variables)
         else:
-            output[step] = model.simulate(variables=variables)
+            output[step,:] = model.simulate(variables=variables)
 
     q_sim = output[:,0]
     q_obs = var.q
     return np.sqrt(np.mean((q_obs - q_sim)**2))
 
-nruns =  25
+nruns =  1
 
 ## Create an empty h5 file.
 ## This line rewrites the parameters.h5 file.
@@ -77,7 +77,7 @@ with h5py.File("data/parameters.h5","w") as f:
 
         initial_guess = [init_s_max, init_rg, init_k, init_fr]
         bounds = Bounds(lb=lb, ub=ub)
-        result = scipy.optimize.minimize(fun=optimize_model, x0=initial_guess, method="L-BFGS-B", bounds = bounds)
+        result = scipy.optimize.minimize(fun=optimize_model, x0=initial_guess, method="L-BFGS-B", bounds = None)
         opt_param = result.x
         
         f.create_dataset("params_"+str(run), data=np.array(opt_param))

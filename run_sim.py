@@ -1,22 +1,22 @@
 from model import VariablePrep, ConceptualWatbalModel
 from utils import read_parameters
 import numpy as np
+from plots import OutputPlot
 
 file_name = "LATTERBACHmeteo.txt" 
-var = VariablePrep(file_name, cal_factor = 0.8, cal_data = False, val_data = True)
+var = VariablePrep(file_name, cal_factor = 0, cal_data = False, val_data = True)
 
-parameters = read_parameters()
+# Manually enter the parameter values after seeing the plot
 
-
-param = {"s_max":parameters[0], 
-            "rg":parameters[1],
-            "k":parameters[2],
-            "fr": parameters[3]
+param = {"s_max":39.4039, 
+            "rg":17.9764,
+            "k":0.8265,
+            "fr":0.0688
             }
 
 num_time_steps = var.j_day.shape[0]
 
-output = np.zeros((var.j_day.shape[0],1))
+output = np.zeros((var.j_day.shape[0],13))
 
 for step in range(num_time_steps):
     variables = {
@@ -24,10 +24,20 @@ for step in range(num_time_steps):
         "temp":var.t_av[step],
         "temp_max":var.t_max_av[step],
         "temp_min":var.t_min_av[step],
-        "precipitation":var.precip[step]
+        "precip":var.precip[step]
     }
     if step == 0:
         model = ConceptualWatbalModel(parameters = param)
         output[step] = model.simulate(variables = variables)
     else:
         output[step] = model.simulate(variables=variables)
+
+
+
+plot_class = OutputPlot(var.q, output)
+plot_class.plot_q()
+#plot_class.plot_percentile()
+#plot_class.plot_et()
+#plot_class.plot_temp()
+#plot_class.plot_precipitation()
+#plot_class.plot_melt()
