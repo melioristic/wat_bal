@@ -4,8 +4,8 @@ A repository for a conceptual hydrological model. (Exercise 2 Watershed Modellin
 ## Instructions set up Environemnt
 1. Download the zip file wat_bal_python.zip and extract it.
 
-2. Install python 3.7.6 (Required) [Its Free](https://www.python.org/downloads/release/python-367/) on your desktop/laptop
-    - To check that python is insalled on your desktop:
+2. Install python 3.7.6 (Required)[(Its Free!)](https://www.python.org/downloads/release/python-367/)
+    - To check that python is installed on your desktop:
         - For Mac open terminal and type pyrhon3 (Mac comes with preinstalled python 2.7.6 but you still need to install python 3.7.6)
         - For Windows 10, open Windows Power Shell and then type Python
 
