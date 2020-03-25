@@ -16,7 +16,7 @@ def read_data(filename = "HONDRICHmeteo.txt"):
     return j_day, precip, t_max, t_min, q
 
 def read_parameters():
-    with h5py.File("data/parameters.h5","r") as f:
+    with h5py.File("parameters.h5","r") as f:
         nruns = len(f.keys())-1
         param_arr = np.zeros((nruns,4))
         for run in range(nruns):

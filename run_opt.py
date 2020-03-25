@@ -61,7 +61,7 @@ nruns =  10
 ## Create an empty h5 file.
 ## This line rewrites the parameters.h5 file.
 ## If parameters.h5 file is already there delete this file
-with h5py.File("data/parameters.h5","w") as f:
+with h5py.File("parameters.h5","w") as f:
         # Do nothing just create the folder
     f.create_dataset("runs", data = [nruns])
 
