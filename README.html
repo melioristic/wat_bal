@@ -365,19 +365,19 @@ code {
           : 'default'
     });
   </script>
-<h1 id="watbal">wat_bal</h1>
+<h1 id="watershed-modelling-exercise-2">Watershed Modelling Exercise 2</h1>
 <p>A repository for a conceptual hydrological model. (Exercise 2 Watershed Modelling, ETH Zurich)</p>
 <h2 id="instructions-set-up-environemnt">Instructions set up Environemnt</h2>
 <ol>
 <li>
-<p>Download the zip file wat_bal_python.zip and extract it.</p>
+<p>Download the zip file <code>wat_bal_python.zip</code> and extract it.</p>
 </li>
 <li>
 <p>Install python 3.7.6 (Required)<a href="https://www.python.org/downloads/release/python-367/">Its Free!</a></p>
 <ul>
 <li>To check that python is installed on your desktop:
 <ul>
-<li>For Mac open terminal and type pyrhon3 (Mac comes with preinstalled python 2.7.6 but you still need to install python 3.7.6)</li>
+<li>For Mac open terminal and type <code>$ python3</code> (Mac comes with preinstalled python 2.7.6 but you still need to install python 3.7.6)</li>
 <li>For Windows 10, open Windows Power Shell and then type Python</li>
 </ul>
 </li>
@@ -395,40 +395,40 @@ code {
 <p>Setting up the project. Installing packages.</p>
 <ul>
 <li>Open Terminal/Windows Power Shell</li>
-<li>Install pipenv by running <code>pip3 install pipenv</code> in Terminal/Windows Power Shell</li>
+<li>Install pipenv by running <code>$ pip3 install pipenv</code> in Terminal/Windows Power Shell</li>
 <li>Open Visual Studio Code</li>
 <li>A welcome screen will appear, in the left side bar select the Extension (icon with 4 squares)</li>
 <li>Search Python. Select Python (Linting, Debugging,..)</li>
 <li>Once it is installed open Explorer on the top left bar. (shift+ctrl+e)</li>
 <li>Select Open Folder, Browse to the directory water_bal_python.</li>
-<li>The folder should contain Pipfile and Pipfile.lock</li>
+<li>The folder should contain <code>Pipfile</code> and <code>Pipfile.lock</code></li>
 <li>Go to Terminal at the top and select new terminal</li>
-<li>Terminal will open at the bottom, Run the command <code>pipenv install</code></li>
+<li>Terminal will open at the bottom, Run the command <code>$ pipenv install</code></li>
 <li>This step may take some time and the internet connection is required</li>
-<li>Restart the VSCode. Now on the lef side of blue colored bottom bar you can see the python version adn in bracket name of the folder along with pipenv. ('wat_bal_python:pipenv')</li>
+<li>Restart the VSCode. Now on the lef side of blue colored bottom bar you can see the python version adn in bracket name of the folder along with <code>pipenv</code>. <code>('wat_bal_python:pipenv')</code></li>
 </ul>
 </li>
 </ol>
 <h2 id="instruction-to-run-the-scripts">Instruction to run the scripts</h2>
 <ul>
-<li>There are 5 scripts namely model.py, plots.py, utils.py run_opt.py, run_param_plot.py, run_sim.py and two folders name data and plots.</li>
-<li>All the required data is in the data folder.</li>
-<li>All the plots will be created in the plots folder</li>
-<li>Two more files will be added namely parameter.h5 and gof.csv</li>
-<li>Parameter.h5 will have the list of parameters for different runs</li>
-<li>gof.csv will contain the goodness of fit values for observation and simulation</li>
+<li>There are 5 scripts namely <code>model.py</code>, <code>plots.py</code>, <code>utils.py</code>, <code>run_opt.py</code>, <code>run_param_plot.py</code>, <code>run_sim.py</code> and two folders name <code>data</code> and <code>plots</code></li>
+<li>All the required data is in the <code>data</code> folder</li>
+<li>All the plots will be created in the <code>plots</code> folder</li>
+<li>Two more files will be added namely <code>parameter.h5</code> and <code>gof.csv</code></li>
+<li><code>Parameter.h5</code> will have the list of parameters for different runs</li>
+<li><code>gof.csv</code> will contain the goodness of fit values for observation and simulation</li>
 <li>Run the scripts in order
 <ul>
-<li>(run_opt.py) run_opt will optimize the model and save the value of parameters in Parameters.h5
+<li><code>run_opt.py</code> will optimize the model and save the value of parameters in Parameters.h5
 <ul>
-<li>Number of runs (nruns) needs to be selected here. Roughly it takes 70-120 runs per iteration depending on the computer.</li>
+<li>Number of runs <code>nruns</code> needs to be selected here. Roughly it takes 70-120 runs per iteration depending on the computer.</li>
 </ul>
 </li>
-<li>(run_param_plot.py) run_param_plot will generate the plots of the parameters</li>
-<li>Seeing the histogram of parameters chose the value of the parameter and add the values to the script run_sim.py</li>
-<li>(run_sim.py) Run the script run_sim.py to save the plots and gof values</li>
-<li>Any change in the structure of the model needs to be made in model.py</li>
-<li>For adding parameters to calibrate some changes also needs to be made in run_opt.py and run_sim.py</li>
+<li><code>run_param_plot.py</code> will generate the plots of the parameters</li>
+<li>Seeing the histogram of parameters chose the value of the parameter and add the values to the script <code>run_sim.py</code></li>
+<li>Run <code>run_sim.py</code> to save the plots and gof values</li>
+<li>Any change in the structure of the model needs to be made in <code>model.py</code></li>
+<li>For adding parameters to calibrate some changes also needs to be made in <code>run_opt.py</code> and <code>run_sim.py</code></li>
 </ul>
 </li>
 </ul>

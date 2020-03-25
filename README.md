@@ -1,4 +1,4 @@
-# wat_bal
+# Watershed Modelling Exercise 2
 A repository for a conceptual hydrological model. (Exercise 2 Watershed Modelling, ETH Zurich)
 
 ## Instructions set up Environemnt
@@ -6,7 +6,7 @@ A repository for a conceptual hydrological model. (Exercise 2 Watershed Modellin
 
 2. Install python 3.7.6 (Required)[Its Free!](https://www.python.org/downloads/release/python-367/)
     - To check that python is installed on your desktop:
-        - For Mac open terminal and type `$ pyrhon3` (Mac comes with preinstalled python 2.7.6 but you still need to install python 3.7.6)
+        - For Mac open terminal and type `$ python3` (Mac comes with preinstalled python 2.7.6 but you still need to install python 3.7.6)
         - For Windows 10, open Windows Power Shell and then type Python
 
 3. Install Visual Studio Code (Recommended)[Its Free!](https://code.visualstudio.com)
