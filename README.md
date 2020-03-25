@@ -2,7 +2,7 @@
 A repository for a conceptual hydrological model. (Exercise 2 Watershed Modelling, ETH Zurich)
 
 ## Instructions set up Environemnt
-1. Download the zip file wat_bal_python.zip and extract it.
+1. Download the zip file `wat_bal_python.zip` and extract it.
 
 2. Install python 3.7.6 (Required)[Its Free!](https://www.python.org/downloads/release/python-367/)
     - To check that python is installed on your desktop:
