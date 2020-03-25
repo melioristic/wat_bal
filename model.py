@@ -71,7 +71,7 @@ class ConceptualWatbalModel(object):
             self.melt = 0
         elif self.temp > self.temp_snow_melt:
             self.melt = min(
-                self.k*(  self.temp-self.temp_snow_melt), self.snow_cover_prev)
+                self.k*( self.temp-self.temp_snow_melt), self.snow_cover_prev)
 
     def compute_snow_cover(self):
         self.snow_cover_current = self.snow_cover_prev - self.melt + self.snow
@@ -149,4 +149,4 @@ class ConceptualWatbalModel(object):
         self.compute_stream_flow()
         self.update()
 
-        return self.q_out, self.et, self.pot_et, self.precip, self.snow, self.rainfall, self.melt, self.snow_cover_current, self.ss_current, self.sg_current, self.temp_min, self.temp, self.temp_max
+        return self.q_out, self.et, self.pot_et, self.precip, self.snow, self.rainfall, self.melt, self.snow_cover_current, self.ss_current, self.q_surf, self.sg_current, self.q_gw, self.temp_min, self.temp, self.temp_max

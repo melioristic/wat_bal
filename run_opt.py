@@ -36,7 +36,7 @@ def optimize_model(parameters):
 
     num_time_steps = var.j_day.shape[0]
 
-    output = np.zeros((var.j_day.shape[0],8))
+    output = np.zeros((var.j_day.shape[0],1))
 
     for step in range(num_time_steps):
         variables = {
@@ -44,19 +44,19 @@ def optimize_model(parameters):
             "temp":var.t_av[step],
             "temp_max":var.t_max_av[step],
             "temp_min":var.t_min_av[step],
-            "precipitation":var.precip[step]
+            "precip":var.precip[step]
         }
         if step == 0:
             model = ConceptualWatbalModel(parameters = param)
-            output[step,:] = model.simulate(variables = variables)
+            output[step] = model.simulate(variables = variables)[0]
         else:
-            output[step,:] = model.simulate(variables=variables)
+            output[step] = model.simulate(variables=variables)[0]
 
     q_sim = output[:,0]
     q_obs = var.q
     return np.sqrt(np.mean((q_obs - q_sim)**2))
 
-nruns =  1
+nruns =  10
 
 ## Create an empty h5 file.
 ## This line rewrites the parameters.h5 file.
@@ -77,7 +77,7 @@ with h5py.File("data/parameters.h5","w") as f:
 
         initial_guess = [init_s_max, init_rg, init_k, init_fr]
         bounds = Bounds(lb=lb, ub=ub)
-        result = scipy.optimize.minimize(fun=optimize_model, x0=initial_guess, method="L-BFGS-B", bounds = None)
+        result = scipy.optimize.minimize(fun=optimize_model, x0=initial_guess, method="L-BFGS-B", bounds = bounds)
         opt_param = result.x
         
         f.create_dataset("params_"+str(run), data=np.array(opt_param))

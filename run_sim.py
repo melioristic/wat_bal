@@ -1,5 +1,5 @@
 from model import VariablePrep, ConceptualWatbalModel
-from utils import read_parameters
+from utils import read_parameters, GOF
 import numpy as np
 from plots import OutputPlot
 
@@ -16,7 +16,7 @@ param = {"s_max":39.4039,
 
 num_time_steps = var.j_day.shape[0]
 
-output = np.zeros((var.j_day.shape[0],13))
+output = np.zeros((var.j_day.shape[0],15))
 
 for step in range(num_time_steps):
     variables = {
@@ -33,11 +33,13 @@ for step in range(num_time_steps):
         output[step] = model.simulate(variables=variables)
 
 
+gof_class = GOF(sim = output[:,0], obs = var.q)
+gof_class.save_gof()
 
-plot_class = OutputPlot(var.q, output)
+
+plot_class = OutputPlot(var.q, var.area, output)
+plot_class.plot_variables()
+plot_class.plot_runoff()
 plot_class.plot_q()
-#plot_class.plot_percentile()
-#plot_class.plot_et()
-#plot_class.plot_temp()
-#plot_class.plot_precipitation()
-#plot_class.plot_melt()
+plot_class.plot_percentile()
+plot_class.plot_scatter()
