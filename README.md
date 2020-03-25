@@ -16,7 +16,7 @@ A repository for a conceptual hydrological model. (Exercise 2 Watershed Modellin
 
 4. Setting up the project. Installing packages.
     - Open Terminal/Windows Power Shell
-    - Install pipenv by running "pip3 install pipenv" (without quotes) in Terminal/Windows Power Shell
+    - Install pipenv by running `pip3 install pipenv` in Terminal/Windows Power Shell
     - Open Visual Studio Code
     - A welcome screen will appear, in the left side bar select the Extension (icon with 4 squares)
     - Search Python. Select Python (Linting, Debugging,..)
@@ -24,7 +24,7 @@ A repository for a conceptual hydrological model. (Exercise 2 Watershed Modellin
     - Select Open Folder, Browse to the directory water_bal_python. 
     - The folder should contain Pipfile and Pipfile.lock
     - Go to Terminal at the top and select new terminal
-    - Terminal will open at the bottom, Run the command "pipenv install"
+    - Terminal will open at the bottom, Run the command `pipenv install`
     - This step may take some time and the internet connection is required 
     - Restart the VSCode. Now on the lef side of blue colored bottom bar you can see the python version adn in bracket name of the folder along with pipenv. ('wat_bal_python:pipenv')
   
