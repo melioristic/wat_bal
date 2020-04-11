@@ -7,6 +7,7 @@ import h5py
 from tqdm import tqdm
 import time
 import matplotlib.pyplot as plt
+import os
 
 
 def optimize_model(parameters):
@@ -58,7 +59,7 @@ def optimize_model(parameters):
     return np.sqrt(np.mean((q_obs - q_sim)**2))
 
 
-nruns = 10
+nruns = 25
 
 # Create an empty h5 file.
 # This line rewrites the parameters.h5 file.
@@ -79,9 +80,16 @@ with h5py.File("parameters.h5", "w") as f:
 
         initial_guess = [init_s_max, init_rg, init_k, init_fr]
         bounds = Bounds(lb=lb, ub=ub)
+        
+        options = {"ftol":10e-9}
+        
         result = scipy.optimize.minimize(
-            fun=optimize_model, x0=initial_guess, method="L-BFGS-B", bounds=bounds)
+            fun=optimize_model, x0=initial_guess, method="L-BFGS-B", bounds=bounds, options=options)
         opt_param = result.x
 
-        f.create_dataset("params_"+str(run), data=np.array(opt_param))
+        f.create_dataset("params_"+str(run), data=np.array(opt_param)) 
+
         #print(f"Completed {np.round((run+1)/nruns*100,2)} % in {time.time()-start_time} seconds")
+
+
+

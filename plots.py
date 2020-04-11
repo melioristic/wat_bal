@@ -1,6 +1,7 @@
 import matplotlib.pylab as plt
 import numpy as np
 from utils import read_parameters
+import os
 
 
 class ParameterPlot(object):
@@ -10,12 +11,16 @@ class ParameterPlot(object):
         self.names = names
         
     def plot(self):
+        if os.path.exists("plots") == False:
+             os.mkdir("plots")
+            
         fig = plt.figure()
         fig.subplots_adjust(hspace=0.4, wspace=0.4)
         for i in range(self.num_param):
             ax = fig.add_subplot(np.ceil(self.num_param/2), 2, i+1)
             ax.hist(self.parameters[:, i], bins=50)
             ax.set_xlabel(self.names[i])
+                
         plt.savefig("plots/param_dist.png")
 
 
@@ -33,6 +38,10 @@ class OutputPlot(object):
         self.c2 = "#2ca02c"
         self.c3 = "#d62728"
         self.linewidth = 0.5
+
+        if os.path.exists("plots") == False:
+             os.mkdir("plots")
+
     def plot_variables(self):
 
         self.et = self.output[:,1]
